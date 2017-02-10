@@ -12,4 +12,10 @@
     </strong>
     followers
   </a>
+  <a href="<%= user_lists_path(@user) %>">
+    <strong id="lists" class="stat">
+      <%= @user.lists.count %>
+    </strong>
+    <%= "list".pluralize(@user.lists.count) %>
+  </a>
 </div>

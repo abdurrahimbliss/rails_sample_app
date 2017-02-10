@@ -114,6 +114,14 @@ describe "User pages" do
       it { should have_content(user.microposts.count) }
     end
 
+    describe "lists" do
+      let!(:list1) { FactoryGirl.create(:list, user: user, name: "List 1") }
+      let!(:list2) { FactoryGirl.create(:list, user: user, name: "List 2") }
+      let!(:list3) { FactoryGirl.create(:list, user: user, name: "List 3") }
+
+      it { should have_link(nil, href: user_lists_path(user)) }
+    end
+
     describe "follow/unfollow buttons" do
       let(:other_user) { FactoryGirl.create(:user) }
       before { sign_in user }

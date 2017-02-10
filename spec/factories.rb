@@ -14,4 +14,9 @@ FactoryGirl.define do
     content "Lorem ipsum"
     user
   end
+
+  factory :list do
+    name "List Lorem ipsum"
+    user
+  end
 end

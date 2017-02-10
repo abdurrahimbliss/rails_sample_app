@@ -1,0 +1,20 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <%= render 'shared/mini_profile' %>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+  <div class="span8">
+    <h3>Subscribed to</h3>
+    <section>
+      <ol class="lists">
+        <%= render partial: 'shared/list_mini', collection: @lists %>
+      </ol>
+      <%= will_paginate @lists %>
+    </section>
+  </div>
+</div>
