@@ -1,0 +1,12 @@
+<% @lists.each do |list| %>
+  <div class="checkbox">
+    <label>
+      <%= check_box_tag "list_#{list.id}",
+                        @memberships[list.id],
+                        @memberships.key?(list.id),
+                        class: 'list_membership',
+                        list_id: list.id %>
+      <%= list.name %>
+    </label>
+  </div>
+<% end %>

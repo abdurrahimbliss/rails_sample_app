@@ -4,7 +4,6 @@ class ListsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @lists = @user.lists.paginate(page: params[:page])
-    @new_list = @user.lists.new
   end
 
   def show

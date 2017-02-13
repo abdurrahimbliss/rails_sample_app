@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
   before_action :signed_in_user,
                 only: [:index, :edit, :update, :destroy, :following, :followers, :lists]
   before_action :correct_user, only: [:edit, :update]
@@ -7,6 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
+    list_memberships(@user)
   end
 
   def index
