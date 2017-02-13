@@ -37,6 +37,6 @@ class List < ActiveRecord::Base
   end
 
   def is_owner?(user)
-    user.id == self.user
+    user.id == self.user.id
   end
 end

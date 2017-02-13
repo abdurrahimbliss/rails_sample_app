@@ -4,6 +4,8 @@ class ListsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @lists = @user.lists
+    subscriptions = @user.subscriptions
+    @lists.push(subscriptions).flatten!
     @memberships = @user.memberships
   end
 
