@@ -1,0 +1,5 @@
+<%= form_for(current_user.list_subscriptions.find_by(list_id: @list.id),
+             html: { method: :delete },
+             remote: true) do |f| %>
+  <%= f.submit "Unsubscribe", class: "btn btn-large" %>
+<% end %>

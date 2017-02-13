@@ -1,0 +1,9 @@
+<% unless @list.is_owner?(current_user) %>
+  <div id="subscription_form">
+  <% if @list.is_subscriber?(current_user) %>
+    <%= render 'lists/unsubscribe' %>
+  <% else %>
+    <%= render 'lists/subscribe' %>
+  <% end %>
+  </div>
+<% end %>

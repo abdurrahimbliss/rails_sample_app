@@ -14,7 +14,14 @@
       <ol class="lists">
         <%= render partial: 'shared/list_mini', collection: @lists %>
       </ol>
-      <%= will_paginate @lists %>
+    </section>
+  </div>
+  <div class="span5">
+    <h3>Member of</h3>
+    <section>
+      <ol class="lists">
+        <%= render partial: 'shared/list_mini', collection: @memberships %>
+      </ol>
     </section>
   </div>
   <% if current_user?(@user) %>

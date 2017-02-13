@@ -3,7 +3,8 @@ class ListsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @lists = @user.lists.paginate(page: params[:page])
+    @lists = @user.lists
+    @memberships = @user.memberships
   end
 
   def show
