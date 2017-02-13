@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
                                    dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
   has_many :lists, dependent: :destroy
+  has_many :list_memberships, dependent: :destroy
+  has_many :memberships, through: :list_memberships, source: :list
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
