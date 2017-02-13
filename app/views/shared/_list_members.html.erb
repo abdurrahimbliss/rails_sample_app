@@ -16,7 +16,7 @@
           <h4 class="modal-title">Include <%= @user.name %> in</h4>
         </div>
 
-        <div id="lists" class="modal-body">
+        <div id="list_lists" class="modal-body">
           <%= render 'shared/list_members_partial' %>
         </div>
 
@@ -25,7 +25,7 @@
   </div>
 
   <script type="text/javascript">
-  $(".list_membership").bind('change', function() {
+  $(document.body).on('change', ".list_membership", function() {
     if (this.checked) {
       $.ajax({
         url: '/list_memberships',
@@ -35,7 +35,7 @@
           user_id: <%= @user.id %>
         }}
       });
-    } else {
+      console.log("Triggering listener...2");
       $.ajax({
         url: '/list_memberships/' + this.value,
         type: 'DELETE'
