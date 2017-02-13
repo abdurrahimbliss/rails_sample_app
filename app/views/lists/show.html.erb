@@ -1,26 +1,6 @@
 <% provide(:title, @list.name) %>
 <div class="row">
-  <aside class="span4">
-    <section>
-      <h1><%= @list.name %></h1>
-      <span>A list by <%= link_to @list.user.name, @list.user %></span>
-    </section>
-    <section>
-      <% @user ||= current_user %>
-      <div class="stats">
-        <a href="<%= user_list_path(@list.user, @list) %>">
-          <strong id="posts" class="stat">
-            Posts
-          </strong>
-        </a>
-        <a href="#">
-          <strong id="members" class="stat">
-            Members
-          </strong>
-        </a>
-      </div>
-    </section>
-  </aside>
+  <%= render 'shared/list_left_pane' %>
   <div class="span8">
     <h5>Posts</h5>
     <section>

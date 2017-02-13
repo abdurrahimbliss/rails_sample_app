@@ -5,4 +5,8 @@ class List < ActiveRecord::Base
   validates :user_id, presence: true
   validates :name, presence: true
   validates :description, length: { maximum: 100 }
+
+  def feed
+    Micropost.from_list(self)
+  end
 end

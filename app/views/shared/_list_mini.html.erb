@@ -1,5 +1,5 @@
 <li>
-  <span><%= list_mini.name %></span>
+  <span><%= link_to list_mini.name, user_list_path(@user, list_mini) %></span>
   <% unless list_mini.description.blank? %>
     <span><%= list_mini.description %></span>
   <% end %>

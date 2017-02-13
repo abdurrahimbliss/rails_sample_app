@@ -1,0 +1,21 @@
+<aside class="span4">
+  <section>
+    <h1><%= @list.name %></h1>
+    <span>A list by <%= link_to @list.user.name, @list.user %></span>
+  </section>
+  <section>
+    <% @user ||= current_user %>
+    <div class="stats">
+      <a href="<%= user_list_path(@list.user, @list) %>">
+        <strong id="posts" class="stat">
+          Posts
+        </strong>
+      </a>
+      <a href="<%= user_list_members_path(@list.user, @list) %>">
+        <strong id="members" class="stat">
+          Members
+        </strong>
+      </a>
+    </div>
+  </section>
+</aside>

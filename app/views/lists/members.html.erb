@@ -1,0 +1,13 @@
+<% provide(:title, @list.name) %>
+<div class="row">
+  <%= render 'shared/list_left_pane' %>
+  <div class="span8">
+    <h5>Members</h5>
+    <% if @members.any? %>
+      <ul class="users">
+        <%= render @members %>
+      </ul>
+      <%= will_paginate @members %>
+    <% end %>
+  </div>
+</div>

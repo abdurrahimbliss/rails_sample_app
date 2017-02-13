@@ -12,6 +12,8 @@ class Micropost < ActiveRecord::Base
   end
 
   def self.from_list(list)
-
+    member_user_ids = "SELECT user_id FROM list_memberships
+                       WHERE list_id = :list_id"
+    where("user_id IN (#{member_user_ids})", list_id: list)
   end
 end

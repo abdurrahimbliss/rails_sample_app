@@ -8,7 +8,7 @@
       <%= render 'shared/stats' %>
     </section>
   </aside>
-  <div class="span8">
+  <div class="span5">
     <h3>Subscribed to</h3>
     <section>
       <ol class="lists">
@@ -17,4 +17,49 @@
       <%= will_paginate @lists %>
     </section>
   </div>
+  <% if current_user?(@user) %>
+    <aside class="span3">
+      <section>
+        <p>Lists are curated collections of users.</p>
+        <button type="button"
+                class="btn btn-info btn-lg"
+                data-toggle="modal"
+                data-target="#createListContainer">
+                Create one
+        </button>
+      </section>
+    </aside>
+  <% end %>
 </div>
+
+<% if current_user?(@user) %>
+  <div id="createListContainer" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <%= form_for([@user, @user.lists.build]) do |f| %>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Create List</h4>
+          </div>
+          <div class="modal-body">
+            <%= render 'shared/error_messages', object: f.object %>
+            <div class="field">
+              <%= f.text_field :name, placeholder: "Your list's name" %>
+            </div>
+            <div class="field">
+              <%= f.text_area :description, placeholder: "Under 100 characters, optional" %>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= f.submit "Save list", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+<% end %>
